@@ -69,3 +69,7 @@ Although the Cloud node was now connected to the correct virtual network adapter
 Although the final solution involved only a few configuration changes, this was one of the first times I had to understand how VMware ESXi networking, EVE-NG Cloud nodes, and Cisco virtual routers all interacted. The issue wasn't caused by the router configuration itself, but by how the virtual networking was presented to the virtual machine.
 
 This experience reinforced an important lesson: when troubleshooting virtual labs, don't assume the problem is inside the Cisco configuration. The virtualization layer is just as important to understand.
+
+⬅️ **Previous:** [Rebuilding the Lab Environment](rebuilding-the-lab-environment.md)
+
+➡️ **Next:** [Installing CUCM Publisher](installing-cucm-publisher.md)
