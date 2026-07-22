@@ -50,3 +50,5 @@ Cisco Packet Tracer is excellent for learning networking fundamentals, but it do
 With the overall design planned, the first real challenge wasn't installing CUCM—it was recovering my ESXi environment after accidentally overwriting the boot drive during a Windows installation.
 
 That experience ultimately shaped how I approached backups, documentation, and lab recovery.
+
+➡️ **Next:** [Connecting EVE-NG to a Physical Network](connecting-eve-ng-to-a-physical-network.md)
