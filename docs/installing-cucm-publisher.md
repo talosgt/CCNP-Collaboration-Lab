@@ -4,17 +4,9 @@
 
 I initially attempted to obtain CUCM through my employer, but wasn't able to get access to the installation media. Since this lab was built for educational purposes, finding installation media became one of the biggest obstacles before I could even begin learning the platform. I was able to eventually gain access to the image through my own means. 
 
-## Smart Licensing
-
-When I first built the lab, I assumed I would need to disable Cisco Smart Licensing to continue using CUCM beyond the evaluation period.
-
-After spending time researching the topic and experimenting with the licensing configuration, I eventually discovered that the built-in evaluation period was sufficient for my lab environment. In practice, I found that the evaluation timer never became an obstacle during my studies, making the additional licensing changes unnecessary.
-
 ## Other Images
 
 During the course of building my lab, I found that the networking community has created several excellent resources for EVE-NG users. One particularly helpful repository was [Cisco Images for GNS3 and EVE-NG](https://github.com/hegdepavankumar/Cisco-Images-for-GNS3-and-EVE-NG), which catalogs a wide variety of virtual appliances and image information for use in lab environments. While users are responsible for obtaining software in accordance with vendor licensing terms, resources like this were invaluable for understanding what virtual appliances were available and how they fit into an EVE-NG deployment.
-
-## Why I Chose to Run CUCM Outside of EVE-NG
 
 ## Why I Deployed CUCM Directly on ESXi
 
@@ -33,11 +25,16 @@ Inside EVE-NG, that network adapter was presented to the lab through a Cloud nod
 
 This made the C8000v the default gateway for devices on the `10.3.3.0/24` Collaboration network.
 
-There were a few reasons for this decision:
+## Benefits of This Design
 
-- Closer to a production environment. In enterprise deployments, CUCM typically runs as its own virtual machine rather than inside a network emulator. Keeping it separate better reflected how I would encounter it in production.
-- Resource management. CUCM is significantly more resource-intensive than a virtual router or switch. Running it directly on ESXi allowed me to allocate CPU, memory, and storage independently without competing with EVE-NG for resources.
-- Network separation. I wanted to create a dedicated Collaboration network instead of placing every device on my home LAN. This allowed me to build a small routed environment similar to what would exist in an enterprise.
+Deploying CUCM directly on ESXi provided several advantages:
+
+- Better resource allocation
+- Easier snapshot management
+- A topology that more closely resembles production deployments
+- Separation between the Collaboration network and the home LAN
+
+## Architecture
 
 Home network:           192.168.1.0/24
 C8000v Gi1:             192.168.1.200/24
@@ -74,3 +71,9 @@ GigabitEthernet1                 GigabitEthernet2
 ```
 
 This design gave me a realistic multi-subnet lab that required proper routing, DNS, DHCP, and later Active Directory integration rather than placing every device on a single flat network.
+
+## Smart Licensing
+
+When I first built the lab, I assumed I would need to disable Cisco Smart Licensing to continue using CUCM beyond the evaluation period.
+
+After spending time researching the topic and experimenting with the licensing configuration, I eventually discovered that the built-in evaluation period was sufficient for my lab environment. In practice, I found that the evaluation timer never became an obstacle during my studies, making the additional licensing changes unnecessary.
